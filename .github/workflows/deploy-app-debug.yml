@@ -39,6 +39,10 @@ jobs:
           echo "App never became healthy"
           exit 1
 
+      - name: Show app logs on failure
+        if: failure()
+        run: cat release/app.log || echo "no log found"
+
       - name: Verify deployed version
         run: |
           actual=$(curl -s http://localhost:8000/health | python3 -c "import sys,json;print(json.load(sys.stdin)['version'])")
