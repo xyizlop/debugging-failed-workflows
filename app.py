@@ -2,7 +2,8 @@ import http.server
 import json
 import os
 
-PORT = int(os.environ.get("PORT", 8000))
+# PORT = int(os.environ.get("PORT", 8000))
+PORT = int(os.environ["APP_PORT"])
 VERSION = os.environ.get("APP_VERSION", "unknown")
 
 
