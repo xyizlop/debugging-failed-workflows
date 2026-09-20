@@ -31,6 +31,7 @@ jobs:
           echo $! > ../app.pid
 
       - name: Wait for app to become healthy
+        timeout-minutes: 2
         run: |
           for i in $(seq 1 30); do
             curl -sf http://localhost:8000/health > /dev/null && exit 0
